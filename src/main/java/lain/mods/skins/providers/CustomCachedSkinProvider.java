@@ -59,7 +59,7 @@ public class CustomCachedSkinProvider implements ISkinProvider
                         try
                         {
                             //if ((image = readImageCached(_workDir, uuid.toString(), new URL(String.format("https://crafatar.com/skins/%s", uuid)), Minecraft.getMinecraft().getProxy())) != null)
-                              if ((image = readImageCached(_workDir, uuid.toString(), new URL(String.format("%1$s/skins/%2$s",CustomHostAddress, uuid)), Minecraft.getMinecraft().getProxy())) != null)
+                              if ((image = readImageCached(_workDir, uuid.toString(), new URL(String.format("%1$s/skins/%2$s",CustomHostAddress, name)), Minecraft.getMinecraft().getProxy())) != null)
                               
                                 break;
                         }

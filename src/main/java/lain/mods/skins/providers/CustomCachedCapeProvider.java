@@ -58,7 +58,7 @@ public class CustomCachedCapeProvider implements ISkinProvider
                         try
                         {
                             //if ((image = readImageCached(_workDir, uuid.toString(), new URL(String.format("https://crafatar.com/capes/%s", uuid)), Minecraft.getMinecraft().getProxy())) != null)
-                              if ((image = readImageCached(_workDir, uuid.toString(), new URL(String.format("%1$s/capes/%2$s",CustomHostAddress, uuid)), Minecraft.getMinecraft().getProxy())) != null)
+                              if ((image = readImageCached(_workDir, uuid.toString(), new URL(String.format("%1$s/capes/%2$s",CustomHostAddress, name)), Minecraft.getMinecraft().getProxy())) != null)
 
                                 break;
                         }

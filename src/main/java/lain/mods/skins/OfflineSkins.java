@@ -3,7 +3,14 @@ package lain.mods.skins;
 import lain.mods.skins.api.ISkin;
 import lain.mods.skins.api.ISkinProviderService;
 import lain.mods.skins.api.SkinProviderAPI;
-import lain.mods.skins.providers.*;
+import lain.mods.skins.providers.CrafatarCachedCapeProvider;
+import lain.mods.skins.providers.CrafatarCachedSkinProvider;
+import lain.mods.skins.providers.CustomCachedCapeProvider;
+import lain.mods.skins.providers.CustomCachedSkinProvider;
+import lain.mods.skins.providers.MojangCachedCapeProvider;
+import lain.mods.skins.providers.MojangCachedSkinProvider;
+import lain.mods.skins.providers.UserManagedCapeProvider;
+import lain.mods.skins.providers.UserManagedSkinProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -18,7 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import com.mojang.authlib.GameProfile;
 
-@Mod(modid = "offlineskins", useMetadata = true, acceptedMinecraftVersions = "[1.10],[1.10.2]")
+@Mod(modid = "offlineskins", useMetadata = true, acceptedMinecraftVersions = "[1.11],[1.11.2]")
 public class OfflineSkins
 {
 
@@ -103,7 +110,7 @@ public class OfflineSkins
 
         if (event.phase == TickEvent.Phase.START)
         {
-            World world = Minecraft.getMinecraft().theWorld;
+            World world = Minecraft.getMinecraft().world;
             if (world != null && world.playerEntities != null && !world.playerEntities.isEmpty())
             {
                 for (Object obj : world.playerEntities)
@@ -134,14 +141,10 @@ public class OfflineSkins
 
             skinService = SkinProviderAPI.createService();
             capeService = SkinProviderAPI.createService();
-
-            //skinService.register(new UserManagedSkinProvider());
             if (useCustomProvider)
                 skinService.register(new CustomCachedSkinProvider(customProvider));
-            //capeService.register(new UserManagedCapeProvider());
             if (useCustomProvider)
                 capeService.register(new CustomCachedCapeProvider(customProvider));
-
             MinecraftForge.EVENT_BUS.register(this);
         }
     }
